@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>我的奖励</title>
+</head>
+<!-- header start -->
+<include file="Public:header"/>
+<!-- end top -->
+<div class="notic_con_wper">
+	  <div class="notic_con px1000">
+	  	   <!--  <div class="notic_ban">
+	  	     	 <img src="__PUBLIC__/images/notic_ban01.png" alt="">
+	  	         </div>
+	  	   -->
+	  	     <div class="notic_section clearfix">
+	  	     	  <div class="notic_sec_l fl">
+	  	     	  	  
+	  	     	  	  <ul class="notic_secl_ul">
+	  	     	  	  	   <li ><a href="{:U('User/center')}">账户首页</a></li>
+	  	     	  	  	   <li><a href="{:U('User/invest')}">投资记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/moneyrecord')}">资金记录</a> </li>
+	  	     	  	  	   <li class="notic_curli"><a href="{:U('User/myrewards')}">我的奖励</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/tyj')}">体验金</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/invite')}">邀请好友</a></li>
+	  	     	  	  	   <li><a href="{:U('User/message')}">消息提醒</a></li>
+	  	     	  	  	   <li><a href="{:U('User/manager')}">账户管理</a></li>
+
+	  	     	  	  </ul>
+	  	     	  </div>
+	  	     	  <!-- end l -->
+	  	     	 <div class="user_right_mainBox">
+	  	     	  
+	  	     	  <div class="user-invest">
+                    <div class="user-div">
+                   	<div class="user-div">
+                    <em>投资记录</em>
+	                    <ul class="tabList">
+	                        <li data-type='0'><a  href="{:U('User/myrewards')}"><button>全部</button></a></li>
+	                        <li class="a" data-type='1'><a  href="{:U('User/myrewards')}?status=2"><button>已使用</button></a></li>
+	                        <li class="b" data-type='2'><a  href="{:U('User/myrewards')}?status=1"><button>未使用</button></a></li>
+	                    </ul>
+                    </div>
+      
+         <div class="index_div">
+               
+					<div class="packets_list">
+								<ul class="cc">
+								<foreach name="data" item="one">
+								<li class="packet_right">
+								<div class="packet_type packet_type_cash packet_type_">现金券</div>
+								<div class="packet_hbfg"></div>
+									<div class="packet_title packet_title_">
+									<p title="投资立减红包" class="packet_title_custom">优惠券</p>
+									<i>{$one.amount}</i>元
+									<p>投<b>{$one.mininvest}可用</b><br/></p>
+									</div>
+								<if condition="($one.type eq 过期) OR ($one.status eq 2)" >
+								<span href="" target="_blank" data-id="15791036" data-useLimitMonth="30-365">
+								<div class="packet_meta">
+										<div class="packet_meta_in">
+										可投30-365天之内的标<br/>
+										有效期：
+										<span>{$one.start_date}~{$one.end_date}</span><br />
+										获得途径：{$one.ticket_name}
+										<div style="font-size:20px;">{$one.status},{$one.type}</div>
+										</div>
+									 
+								</div>
+									</span>
+									 
+									<else />
+									 <a href="{:U('Index/invest')}" target="_blank" data-id="15791036" data-useLimitMonth="30-365">
+								<div class="packet_meta">
+										<div class="packet_meta_in">
+										可投30-365天之内的标<br/>
+										有效期：
+										<span>{$one.start_date}~{$one.end_date}</span><br />
+										获得途径：{$one.ticket_name}
+										<div style="font-size:20px;">{$one.status},{$one.type}</div>
+										</div>
+								</div>
+									<div class="packet_usebtn">
+									立即使用
+									</div>
+									</a>
+									</if>
+								</li>
+								</foreach>
+								
+							<!-- <li class="packet_left">
+								<div class="packet_type packet_type_cash packet_type_">现金券</div>
+								<div class="packet_hbfg"></div>
+								<div class="packet_title packet_title_">
+								<p title="投资立减红包" class="packet_title_custom">优惠券</p>
+								<i font-size='20px'>30</i>元
+								<p>
+								投<b>2000可用</b><br/>
+								</p>
+								</div>
+								<a href="" target="_blank" data-id="15758252" data-useLimitMonth="30-365">
+								<div class="packet_meta">
+								<div class="packet_meta_in">
+								可投30-365天之内的标<br/>
+								有效期：
+								<span>2017-02-24~2017-03-03</span><br />
+								获得途径：会员尊享活动
+								</div>
+								</div>
+								<div class="packet_usebtn">
+								立即使用
+								</div>
+								</a>
+								</li>
+								-->	
+								</ul>
+						</div>
+					</div>
+		
+				</div>
+             </div>
+          </div>
+	  </div>
+</div>
+
+<!-- footer start -->
+<include file="Public:footer"/>
+<!-- footer end -->

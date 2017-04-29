@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>投资管理</title>
+</head>
+<!-- header start -->
+<include file="Public:header"/>
+<!-- end top -->
+<div class="notic_con_wper">
+	  <div class="notic_con px1000">
+	  	   <!--  <div class="notic_ban">
+	  	     	 <img src="__PUBLIC__/images/notic_ban01.png" alt="">
+	  	         </div>
+	  	   -->
+	  	     <div class="notic_section clearfix">
+	  	     	  <div class="notic_sec_l fl">
+	  	     	  	  
+	  	     	  	  <ul class="notic_secl_ul">
+	  	     	  	  	   <li ><a href="{:U('User/center')}">账户首页</a></li>
+	  	     	  	  	   <li class="notic_curli"><a href="{:U('User/invest')}">投资记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/moneyrecord')}">资金记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/myrewards')}">我的奖励</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/tyj')}">体验金</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/invite')}">邀请好友</a></li>
+	  	     	  	  	   <li><a href="{:U('User/message')}">消息提醒</a></li>
+	  	     	  	  	   <li><a href="{:U('User/manager')}">账户管理</a></li>
+
+	  	     	  	  </ul>
+	  	     	  </div>
+	  	     	  <!-- end l -->
+	  	     	  <div class="user_right_mainBox">
+	  	     	  
+	  	     	  <div class="user-invest">
+                    <div class="user-div">
+                    <em>投资记录</em>
+	                    <ul class="tabList">
+	                        <li data-type='0'><a  href="{:U('User/invest')}"><button class="btn_dhk" >全部({$allnum})</button></a></li>
+	                        <li data-type='1'><button class="btn_dhk" value="1">待回款({$dnum})</button></li>
+	                        <li data-type='2'><button class="btn_dhk" value="2">已回款({$ynum})</button></li>
+	                    </ul>
+                    </div>
+    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+    <script>
+    	$(document).ready(function(){
+    		$(".btn_dhk").click(function(){
+    			
+    			$(".btn_dhk").css('border-bottom',"0px solid black");
+    			
+    			$("#tzjl").html('');
+    			$("#all").html('');
+    			$(this).css("border-bottom","2px solid #e6300a");
+    			v1=$(this).val();
+    			cha1="status="+v1;
+    			$.ajax({
+    						
+    					type:"POST",
+    					url:"{:U('User/cha')}",
+    					data:cha1,
+    					success:function(msg){
+    						
+    							 var arr = JSON.parse(msg);
+    							 str=" <table width=\"800px\"   style=\"font-size:20px;\"><tr height=\"30\"><th>回款时间</th><th>项目名称</th><th>投资金额（元）</th><th>到期本息（元）</th><th width=\"45\">成交时间</th><th>回款状态</th><th>电子合同</th></tr>";
+    							 for(var i=0;i<arr.length;i++){
+    								 	
+     									str+="<tr height=\"18\"><td>"+arr[i].pay_time+"</td><td>"+arr[i].invest_name+"</td><td>"+arr[i].invest_amount+"</td><td>"+arr[i].get_amount+"</td><td width=\"45\">"+arr[i].ctime+"</td><td>"+arr[i].status+"</td><td>--</td></tr>";
+     								
+     							 }
+    							 str+="</table>";
+     							
+    							 $("#tzjl").html(str);
+    						
+    						}
+    			});
+    		
+ 	
+    		});
+    	});
+ 
+    </script>
+                        <!-- <label>查询条件:</label> -->
+             
+         <div class="index_div">
+                 <table id="all" width="800px"  style="font-size:20px;">
+                  	<tr height="30">
+                    <th>回款时间</th>
+                    <th>项目名称</th>
+                    <th>投资金额（元）</th>
+                    <th>到期本息（元）</th>
+                    <th width="45">成交时间</th>
+                    <th>回款状态</th>
+                    <th>电子合同</th>
+                    </tr>
+                    <foreach name='data1' item='v'>
+                    <tr>
+                    	<td>{$v.pay_time}</td>
+                    	<td>{$v.invest_name}</td>
+                    	<td>{$v.invest_amount}</td>
+                    	<td>{$v.get_amount}</td>
+                    	<td width="45">{$v.ctime}</td>
+                    	<td>{$v.status}</td>
+                    	<td>--</td>
+                    </tr>
+  					</foreach>
+              </table> 
+              	
+              <div id="tzjl">
+              </div>	
+             </div>             
+            </div>
+            </div>
+        </div>      
+     </div>
+ </div>
+	  
+<!-- footer start -->
+<include file="Public:footer"/>
+<!-- footer end -->

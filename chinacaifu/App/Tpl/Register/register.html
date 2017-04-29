@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>注册</title>
+</head>
+<!-- header start -->
+<include file="Public:header"/>
+<!-- end top -->
+<div class="reg_con_wper">
+	<div class="reg_con px1000">
+		   <div class="reg_box clearfix">
+		   	   <div class="reg_box_l fl">
+		   	   	  <img src="__PUBLIC__/images/reg_pic01.png" alt="">
+		   	   </div>
+		   	   <div class="reg_box_r fl">
+		   	   	    <h2 class="lg_sec_tit clearfix">
+	  	   	     	      <span class="fl">注册</span>
+	  	   	     	      <em class="fr">如有帐号，<a href="{:U('Login/login')}">请点击登录</a></em>
+	  	   	     	</h2>
+	  	   	     	<form action="{:U('Register/insert')}"  method="post">
+						<span id="mb"></span>
+	  	   	     	   	    <fieldset>
+	  	   	     	   	    	  <p class="mt20">
+	  	   	     	   	    	  	 <input type="tel" id="tel"  placeholder="手机号" name="mobile" class="lg_input03 lg_input">
+
+	  	   	     	   	    	  </p>
+                                  <p class="mt20">
+	  	   	     	   	    	  	 <input type="password" id="pwd" placeholder="密码" name="password" class="lg_input02 lg_input">
+	  	   	     	   	    	  </p>
+                                  <p class="mt20">
+	  	   	     	   	    	  	 <input type="password" placeholder="密码确认" name="repassword" class="lg_input02 lg_input">
+	  	   	     	   	    	  </p>
+	  	   	     	   	    	
+                                  <p class="mt20">
+	  	   	     	   	    	  	 <input type="email" placeholder="邮箱" name="email" id="email" class="lg_input01 lg_input">
+	  	   	     	   	    	  </p>
+	  	   	     	   	    	  
+                                  <p class="mt20 yanzheng">
+	  	   	     	   	    	  	 <input type="text" placeholder="邮箱验证码" name="code" class="lg_input04 lg_input">
+	  	   	     	   	    	  	 <span id="getCode" >发送验证码</span>
+	  	   	     	   	    	  </p>
+                                   <p class="mt20">
+	  	   	     	   	    	  	 <input type="text" id="code" placeholder="邀请码" value="{$from_code}" name="from_code" class="lg_input03 lg_input">
+	  	   	     	   	    	 	<span id="codec"></span>
+	  	   	     	   	    	   </p>
+	  	   	     	   	    	   <p class="mt20">
+	  	   	     	   	    	  	 <select name="type">
+	  	   	     	   	    	  	 	<option value="1">投资者</option>
+	  	   	     	   	    	  	 	<option value="2">借款人</option>
+	  	   	     	   	    	  	 </select>
+	  	   	     	   	    	  </p>
+                                  <p class="pt10"><a href="#">使用条款</a>&nbsp;&nbsp;<a href="#">隐私条款</a></p>
+                                 <p class="mt20"><input class="lg_btn" type="submit" value="立即注册"></p>
+	  	   	     	   	    </fieldset>
+	  	   	     	   </form>
+	  	   	     	   <p>投资有风险！！！</p>
+
+				   <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+				   <script>
+                       $(document).ready(function() {
+
+                           $("#tel").blur(function(){
+                               str=$("#tel").val();
+                              var telz=/^1[34578]{1}\d{9}$/;
+                               if(!telz.test(str)){
+                                   alert("电话号码格式不正确");
+                                   this.setCustomValidity("电话号码格式不正确");
+                                   return false;
+                               }else{
+                                   url="act=checkmobile&mobile="+str;
+                                   $.ajax({
+                                       type: "POST",
+                                       url: "{:U('Register/check')}",
+                                       data: url,
+                                       success: function (msg) {
+                                           if(msg=="1"){
+                                               $("#mb").html("<font color='green'>该手机号可以注册!</font>");
+                                               $(":submit").removeAttr("disabled");
+                                           }else{
+                                               $("#mb").html("<font color='red'>该号码已注册,请更换！</font>");
+                                               $(":submit").attr("disabled","disabled");
+                                           }
+                                       }
+                                   });
+                                   return true;
+                               }
+                           });
+                           $("#pwd").blur(function(){
+                               str=$("#pwd").val();
+                               var reg=/^[0-9a-zA-Z]{5}\d+$/;
+                               if(!reg.test(str)){
+                                   alert("密码由数字字母组成");
+                                   this.setCustomValidity("密码由数字字母组成");
+                                   return false;
+                               }
+                               if(str.length<6){
+                                   alert("密码不能少于6位");
+                                   this.setCustomValidity("密码不能少于6位");
+                                   return false;
+
+                               }else{
+                                   return true;
+                               }
+                           });
+                           $("#email").blur(function(){
+                               str=$("#email").val();
+                               var emailz=/^\w+(\.\w+)*@\w+(\.\w+)+$/i;
+                               if(!emailz.test(str)){
+                                   alert("邮箱格式不正确");
+                                   this.setCustomValidity("邮箱格式不正确");
+                                   return false;
+                               }else {
+                                   url="act=checkemail&email="+str;
+                                   $.ajax({
+                                       type: "POST",
+                                       url: "{:U('Register/check')}",
+                                       data: url,
+                                       success: function (msg) {
+                                           if(msg=="1"){
+                                               $("#mb").html("<font color='green'>该邮箱可以注册!</font>");
+                                               $(":submit").removeAttr("disabled");
+                                           }else{
+                                               $("#mb").html("<font color='red'>该邮箱已注册,请更换！</font>");
+                                               $(":submit").attr("disabled","disabled");
+                                           }
+                                       }
+                                   });
+                                   return true;
+							   }
+                           });
+                           $("#code").blur(function(){
+                              v=$("#code").val();
+                               url="act=checkFromcode&code="+v;
+                               $.ajax({
+                                   type: "POST",
+                                   url: "{:U('Register/check')}",
+                                   data: url,
+                                   success: function (msg) {
+                                       if(msg=="0"){
+                                           $("#codec").html("<font color='green'>该邀请码有效!</font>");
+                                           $(":submit").removeAttr("disabled");
+                                       }else{
+                                           $("#codec").html("<font color='red'>不存在该邀请码，请更换！</font>");
+                                           $(":submit").attr("disabled","disabled");
+                                       }
+                                   }
+                               });
+
+                           });
+                           $('#getCode').click(function () {
+                               var btn = $(this);
+                               var count = 60;
+                               v=$("#email").val();
+                               cha="email="+v+"&type=2";
+                               $.ajax({
+                                   type: "POST",
+                                   url: "{:U('Register/mail')}",
+                                   data: cha,
+                                   success: function (msg) {
+                                       alert(msg);
+                                   }
+                               });
+
+                               var resend = setInterval(function () {
+                                   count--;
+                                   if (count > 0) {
+                                       btn.html(count + "秒");
+                                       btn.attr('disabled', true).css('cursor', 'not-allowed');
+
+                                   } else {
+                                       clearInterval(resend);
+                                       btn.html("获取验证码");
+                                   }
+                               }, 1000);
+
+                           });
+
+                       });
+			       		</script>
+		   	   </div>
+		   </div>
+	</div>
+</div>
+<!-- footer start -->
+<include file="public:footer"/>
+<!-- footer end -->

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <div>
+  <block name="c1">
+  sss
+  </block>
+  </div>
+  <div>5555</div>
+  <div>55555</div>
+  
+  <foreach name="arr" Item="one">
+<if condition="$key%2==0">
+	 <h3 style="color:red">{$one['username']}</h3>
+<else/>
+	{$one['username']}
+</if>
+</foreach>
+</body>
+</html>

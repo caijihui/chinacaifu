@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css">
+	<link rel="stylesheet" href="_PUBLIC_/Plugins/jPops/jquery.jpops.min-v3.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.2.min.js"></script>
+    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+	<script src="_PUBLIC_/Plugins/jPops/jquery.jpops.min-v3.js?version=2014102917"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/all.js"></script>
+	<!--[if IE 6]>
+	<script src="./js/iepng.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		EvPNG.fix('div, ul, img, li, input,span, p');
+	</script>
+	<![endif]-->
+</head>
+<!-- header start -->
+<div class="zxcf_top_wper">
+	<div class="zxcf_top px1000 clearfix">
+		 <div class="zxcf_top_l fl">
+		    <img src="__PUBLIC__/images/zxcf_phone.png" alt="">
+			 400-010-0101(工作时间9:00-17:30)
+		    <a href="#" id="ewm"><img src="__PUBLIC__/images/zxcf_weixin.png" alt=""></a>
+		    <a href="#"><img src="__PUBLIC__/images/zxcf_sina.png" alt=""></a>
+		    <a href="#"><img src="__PUBLIC__/images/zxcf_qq.png" alt=""></a>
+		 </div>
+		 <div class="zxcf_top_r fr">
+		 <if condition="$Think.session.login eq 1">
+		 	<a href="{:U('User/center')}" id="mobile">{$Think.session.mobile}</a>
+		 	<span>|</span>
+		 	<a href="{:U('Login/logOut')}">退出</a>
+
+			<!-- <span>|</span>
+			 <a href="javascript:;" onclick="exits()">ajax退出</a>
+			 -->
+			 <span>|
+			 </span>
+		 <else />
+		
+		 	<a href="{:U('Login/login')}" class="curspan">立即登录</a>
+		 	<span>|</span>
+		 	<a href="{:U('Register/register')}">免费注册</a>
+		 	<span>|</span>
+		 	</if>
+		 	<a href="{:U('Index/problem')}">常见问题</a>
+		 </div>
+	</div>
+</div>
+	 <div id="tp" style="display:none;margin-left:400px;">
+			<img src="__PUBLIC__/images/ft_erweima.png">
+	</div>
+<!-- end -->
+<!-- top -->
+<div class="zxcf_nav_wper">
+	<div class="zxcf_nav clearfix px1000">
+		 <div class="zxcf_nav_l fl"><img src="__PUBLIC__/images/zxcf_logo.png" alt=""></div>
+		<script type="text/javascript">
+            function exits(){
+				$.jPops.confirm({
+                    title:"提示",
+                    content:'您确定要执行该操作吗？',
+                    okBtnTxt:"确定",
+                    cancelBtnTxt:"取消",
+                    callback:function(r){
+                        if(r){
+                            $.ajax({
+                                url: "{:U('Login/exits')}",
+                                data: {act:exit},
+                                success: function(data){
+                                    var msg = '';
+                                    if(data == 'success'){
+                                        msg ="退出成功";
+                                    } else {
+                                        msg ="退出失败";
+                                    }
+                                    $.jPops.alert({
+                                        title:"提示",
+                                        content: msg,
+                                        okBtnTxt:"确定",
+                                        callback:function(){
+                                            location.reload();
+                                            return true;
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                        return true;
+                    }
+                });
+            }
+		</script>
+
+			<script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+			<script>
+		    $(document).ready(function(){
+
+	    		$("#zxcf_nav_r").hover(function(){
+	    			 $("#list").toggle();
+	    			});
+	    		$("#ewm").hover(function(){
+	    		     $("#tp").css("position","absolute").css('top',"30px").css("left","130px");
+	    			 $("#tp").toggle();
+	    			});
+	    		$("#zxcf_nav_r").blur(function(){});
+	    		
+			});
+			</script>
+			
+		 <div  id="zxcf_nav_r">
+		 <if condition="$Think.session.login eq 1">
+		    <div id="my">
+		 	<a href="{:U('User/center')}" ><img src="__PUBLIC__/images/zxcf_perinfo.png" alt="">
+		 	<span>我的账户
+		 	<img src="__PUBLIC__/images/zxcf_icon01.png" alt=""></span>
+		 	</a>
+		 	</div>
+		 	<div id="list" style="display:none">
+		 	<ul class="zxcf_perinfo" >
+		 		<li>&nbsp;&nbsp;<a href="#"> 个人充值</a></li>
+		 		<li>&nbsp;&nbsp;<a href="{:U('User/myrewards')}"> 优惠券</a></li>
+		 		<li>&nbsp;&nbsp;<a href="{:U('User/message')}"> 新消息</a></li>
+		 		<li>&nbsp;&nbsp;<a href="{:U('Login/logOut')}"> 退出</a></li>
+		 	</ul>
+		 	</div>
+		
+		 <else />
+		 <a href="{:U('Index/index')}" >返回首页</a>
+		 </if>
+		 
+		</div>
+	</div>
+</div>
+<!-- top end -->
+		 
+<div class="zxcf_menu_wper">
+	<div class="zxcf_menu px1000">
+		  <a href="{:U('Index/index')}" class="zm_cura">首页</a>
+		  <a href="{:U('Invest/investList')}">我要投资</a>
+		  <a href="{:U('Loan/borrow')}">我要借款</a>
+		  <a href="http://www.wdzj.com/" >网贷之家</a>
+		  <a href="{:U('Index/problem')}">新手指引</a>
+		  <a href="{:U('Index/noticelist')}" style="margin-right:0;">关于我们</a>
+	</div>
+		
+</div>
+<!-- end  -->

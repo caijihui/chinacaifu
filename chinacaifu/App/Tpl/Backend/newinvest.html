@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台模板</title>
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="__PUBLIC__/css/add.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="__PUBLIC__/utilLib/bootstrap.min.css" type="text/css" media="screen" />
+
+</head>
+<body>
+<div class="div_from_aoto" style="width: 500px;">
+    <FORM action="{:U('Backend/newinvest')}" method="get">
+        <DIV class="control-group">
+            <label class="laber_from">标名称</label>
+            <DIV  class="controls" ><INPUT class="input_from" name="invest_name" type=text placeholder=" 输入标名"><P class=help-block></P></DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from">募集金额</LABEL>
+            <DIV  class="controls" ><INPUT class="input_from" name="amount" type="number" placeholder=" 请输入募集金额">元<P class=help-block></P></DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from">借款期限</LABEL>
+            <DIV  class="controls" ><INPUT class="input_from" type="number" name="time_limit" placeholder=" 请输入募集期限">月<P class=help-block></P></DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from" >利率</LABEL>
+            <DIV  class="controls" ><INPUT class="input_from" name="rate" type="text" placeholder=" 请输入利率"><P class=help-block></P></DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from">回款类型</LABEL>
+            <DIV  class="controls" >
+                <SELECT class="input_select" name="pay_way">
+                    <OPTION selected value="1">按月付息，到期返本</OPTION>
+                    <OPTION value="2">到期一次性还本付息</OPTION>
+                    <OPTION value="3">等额本息</OPTION>
+                </SELECT>
+            </DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from" ></LABEL>
+            <DIV class="controls" ><button type="submit" class="btn btn-success" style="width:120px;" >确认发布</button></DIV>
+        </DIV>
+    </FORM>
+</div>
+</body>
+</html>

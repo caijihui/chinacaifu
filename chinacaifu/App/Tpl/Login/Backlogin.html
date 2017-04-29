@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台模板</title>
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="__PUBLIC__/css/add.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="__PUBLIC__/utilLib/bootstrap.min.css" type="text/css" media="screen" />
+
+</head>
+<body>
+<div class="div_from_aoto" style="width: 500px;">
+    <FORM action="{:U('Login/check')}" method="post">
+        <DIV class="control-group">
+            <label class="laber_from">手机号</label>
+            <DIV  class="controls" ><INPUT class="input_from" name="mobile" type="text" placeholder="手机号"><P class=help-block></P></DIV>
+        </DIV>
+        <input type="hidden" name="type" value="3"/>
+        <DIV class="control-group">
+            <LABEL class="laber_from">密码</LABEL>
+            <DIV  class="controls" ><INPUT class="input_from" name="password" type="password" placeholder=" 请输入密码"><P class=help-block></P></DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from">验证码</LABEL>
+            <DIV  class="controls" ><INPUT class="input_from" name="code" type="text" placeholder="验证码">
+                <span ><img alt="" src="__APP__/Login/verify" onclick="this.src=this.src+'?'"></span><P class=help-block></P></DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from" ></LABEL>
+            <DIV class="controls" ><button type="submit" class="btn btn-success" style="width:120px;" >登录</button></DIV>
+        </DIV>
+    </FORM>
+</div>
+</body>
+</html>

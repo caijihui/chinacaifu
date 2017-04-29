@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table  border="1" cellpadding="0" style="border: 1px solid red;width:800px;margin-left:50px;">
+    <tr>
+        <th>公告id</th>
+        <th>公告标题</th>
+        <th>来源</th>
+        <th>内容</th>
+        <th>创建时间</th>
+        <th>操作</th>
+    </tr>
+    <foreach name="data" item="one">
+        <tr>
+            <td>{$one.id}</td>
+            <td>{$one.title}</td>
+            <td>{$one.source}</td>
+            <td><textarea cols="30" rows="5" disabled>{$one.content}</textarea></td>
+            <td>{$one.ctime}</td>
+            <td>
+                <a href="{:U('Backend/ggResult')}?id={$one.id}&act=del" >删除</a>
+            </td>
+
+        </tr>
+    </foreach>
+
+
+
+</table>
+<div style="width: auto;margin-left: 200px;margin-top: 30px">{$page}</div>
+
+</body>
+</html>

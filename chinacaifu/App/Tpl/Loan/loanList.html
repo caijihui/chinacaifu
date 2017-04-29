@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table  border="1" cellpadding="0" style="border: 1px solid red;width:800px;margin-left:50px;">
+    <tr>
+        <th>借款id</th>
+        <th>借款申请人</th>
+        <th>联系方式</th>
+        <th>欲借款金额(万元)</th>
+        <th>借款期限(月)</th>
+        <th>类型</th>
+        <th>借款说明</th>
+        <th>申请时间</th>
+        <th>状态</th>
+        <th>操作</th>
+
+    </tr>
+    <foreach name="data" item="one">
+            <td>{$one.id}</td>
+            <td>{$one.bname}</td>
+            <td>{$one.bmobile}</td>
+            <td>{$one.bamount}</td>
+            <td>{$one.btime_limit}</td>
+            <td>{$one.buse_way}</td>
+            <td>{$one.bdisc}</td>
+            <td>{$one.ctime}</td>
+            <if  condition="$one.status eq 1" >
+              <td>待审核</td>
+                <td>
+                    <a href="{:U('Loan/loanResult')}?id={$one.id}&r=2" >同意</a>
+                    <a href="{:U('Loan/loanResult')}?id={$one.id}&r=3" >拒绝</a>
+                </td>
+            <elseif condition="$one.status eq 2"/>
+              <td>审核通过，已同意</td>
+              <td>--</td>
+            <else />
+              <td>审核不通过，已拒绝</td>
+              <td>--</td>
+            </if>
+
+
+
+        </tr>
+    </foreach>
+
+
+
+</table>
+<div style="width: auto;margin-left: 200px;margin-top: 30px">{$page}</div>
+
+
+
+</body>
+</html>

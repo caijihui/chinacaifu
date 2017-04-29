@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>消息提醒</title>
+</head>
+<!-- header start -->
+<include file="Public:header"/>
+<!-- end top -->
+<div class="notic_con_wper">
+	  <div class="notic_con px1000">
+	  	   <!--  <div class="notic_ban">
+	  	     	 <img src="__PUBLIC__/images/notic_ban01.png" alt="">
+	  	         </div>
+	  	   -->
+	  	     <div class="notic_section clearfix">
+	  	     	  <div class="notic_sec_l fl">
+	  	     	  	  
+	  	     	  	  <ul class="notic_secl_ul">
+	  	     	  	  	   <li ><a href="{:U('User/center')}">账户首页</a></li>
+	  	     	  	  	   <li><a href="{:U('User/invest')}">投资记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/moneyrecord')}">资金记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/myrewards')}">我的奖励</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/tyj')}">体验金</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/invite')}">邀请好友</a></li>
+	  	     	  	  	   <li class="notic_curli"><a href="{:U('User/message')}">消息提醒</a></li>
+	  	     	  	  	   <li><a href="{:U('User/manager')}">账户管理</a></li>
+
+	  	     	  	  </ul>
+	  	     	  </div>
+	  	     	  <!-- end l -->
+	  	     	  <div class="notic_sec_r fl">
+	  	     	  	   <h2 class="notic_secr_tit">全部消息</h2>
+						 
+	  	     	  	   <div class="hc_zjwt ">
+	  	     	  	   
+	 	    	   	  <foreach name='data' item='v'>
+	 	    	   	    <if condition="$v.status eq 1">
+	 	    	   	    <div class="hc_zjwt_one mt20">
+	 	    	   	   	    <h3 class="" >{$v.title}</h3>
+	 	    	   	   	    <div class="hc_answer" style="display: none;">
+	 	    	   	   	    	 {$v.content}
+	 	    	   	   	    </div>
+	 	    	   	   </div>
+	 	    	   	   <else />
+	 	    	   	
+	 	    	   	    <div class="hc_zjwt_one mt20">
+	 	    	   	   	    <h3 class="hc_zjwt_onebg01">{$v.title}</h3>
+	 	    	   	   	    <div class="hc_answer" style="display: none;">
+	 	    	   	   	    	 {$v.content}
+	 	    	   	   	    </div>
+	 	    	   	   </div>
+	 	    	   	   
+					</if>
+					 </foreach>
+	 	    	   </div>
+	  	     	  </div>
+	  	     </div>
+	  </div>
+</div>
+
+<!-- footer start -->
+<include file="Public:footer"/>
+<!-- footer end -->

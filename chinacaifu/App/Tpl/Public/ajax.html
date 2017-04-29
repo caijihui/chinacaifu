@@ -1,0 +1,39 @@
+              
+               <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+			    <script>
+			    	$(document).ready(function(){
+			    		$(".btn_t").click(function(){
+			    			$(".btn_dhk").css('border-bottom',"0px solid black");
+			    			
+			    			$("#tzjl").html('');
+			    			$("#all").html('');
+			    			$(this).css("border-bottom","2px solid #e6300a");
+			    			v1=$(this).val();
+			    			alert(v1);
+			    			cha1="status="+v1;
+			    			$.ajax({
+			    						
+			    					type:"POST",
+			    					url:"{:U('User/searchticekt')}",
+			    					data:cha1,
+			    					success:function(msg){
+			    						
+			    							 var arr = JSON.parse(msg);
+			    							 str="";
+			    							 for(var i=0;i<arr.length;i++){
+			    								 	
+			     									//str+="<tr height=\"18\"><td>"+arr[i].pay_time+"</td><td>"+arr[i].invest_name+"</td><td>"+arr[i].invest_amount+"</td><td>"+arr[i].bx+"</td><td width=\"45\">"+arr[i].ctime+"</td><td>"+arr[i].status+"</td><td>--</td></tr>";
+			     								
+			     							 }
+			    							 str+="</table>";
+			     							
+			    							 $("#tzjl").html(str);
+			    						
+			    						}
+			    			});
+			    		
+			 	
+			    		});
+			    	});
+			 
+			    </script>

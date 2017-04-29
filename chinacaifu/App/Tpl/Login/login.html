@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>登录</title>
+</head>
+<!-- header start -->
+<include file="Public:header"/>
+<!-- end top -->
+<div class="login_con_wper">
+	  <div class="login_con px1000 ">
+	  	   <div class="lg_section clearfix">
+	  	   	     <div class="lg_section_l fl">
+	  	   	     	<img src="__PUBLIC__/images/lg_bg02.png"> 
+	  	   	     </div>
+	  	   	     <!-- end l -->
+	  	   	     <div class="lg_section_r fl">
+	  	   	     	   <h2 class="lg_sec_tit clearfix">
+	  	   	     	      <span class="fl">登录</span>
+	  	   	     	      <em class="fr">没有帐号，<a href="{:U('Register/register')}">立即注册</a></em>
+	  	   	     	   </h2>
+	  	   	     	   <form action="{:U('Login/check')}" method="post">
+	  	   	     	   	    <fieldset>
+	  	   	     	   	    	  <p class="mt20">
+	  	   	     	   	    	  	 <input type="text" placeholder="用户名/手机" name="mobile" id="tel" class="lg_input01 lg_input">
+	  	   	     	   	    		<span id="mb"></span>
+	  	   	     	   	    	    </p>
+                                  <p class="mt20">
+	  	   	     	   	    	  	 <input type="password" placeholder="密码" name="password" class="lg_input02 lg_input">
+									  <input type="hidden" name="type" value="1">
+									  <input type="hidden" name="status" value="1">
+	  	   	     	   	    	  </p>
+	  	   	     	   	    	  <p class="mt20 yanzheng">
+	  	   	     	   	    	  	 <input type="text" placeholder="验证码" name="code" class="lg_input04 lg_input">
+	  	   	     	   	    	  	 <span ><img alt="" src="__APP__/Login/verify" onclick="this.src=this.src+'?'"></span>
+	  	   	     	   	    	  </p>
+                                 <p class="clearfix lg_check"><span class="fl"><input type="checkbox">记住用户名</span><a href="{:U('Login/forgetpwd')}" class="fr">忘记密码？找回</a></p>
+                                 <p><input class="lg_btn" type="submit" value="立即登录"></p>
+	  	   	     	   	    </fieldset>
+	  	   	     	   </form>
+					 <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+					 <script>
+                         $(document).ready(function(){
+
+                             $("#tel").blur(function(){
+                                 str=$("#tel").val();
+                                     url="act=checkmobile&mobile="+str;
+                                     $.ajax({
+                                         type: "POST",
+                                         url: "{:U('Register/check')}",
+                                         data: url,
+                                         success: function (msg) {
+                                             if(msg=="1"){
+                                                 $("#mb").html("<font color='red'>该手机号未注册!</font>");
+                                             }else{
+                                                 $("#mb").html("<font color='green'>验证通过</font>");
+                                             }
+                                         }
+                                     });
+                             });
+                         });
+
+					 </script>
+	  	   	     </div>
+	  	   </div>
+	  </div>
+</div>
+<!-- footer start -->
+<include file="Public:footer"/>
+<!-- footer end -->

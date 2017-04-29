@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+    <title>找回密码</title>
+</head>
+<!-- header start -->
+<include file="Public:header"/>
+<!-- end top -->
+<div class="notic_con_wper">
+
+    <div id="container">
+
+        <div class="main_area min_h">
+            <div class="trj-forget-pwd">
+                <div class="trj-common-titles">找回登录密码</div>
+                <div class="account-passform">
+                    <div class="tac pb35 borb-e5">
+                        <div class="indicator-group group4">
+                            <ul>
+                                <li class="item active">
+                                    <div class="num"><i>1</i></div>
+                                    <div class="txt"><span>验证邮箱</span></span></div>
+                                </li>
+                                <li class="item">
+                                    <div class="num"><i>3</i></div>
+                                    <div class="txt"><span>验证密码</span></span></div>
+                                </li>
+                                <li class="item">
+                                    <div class="num"><i>3</i></div>
+                                    <div class="txt"><span>重置密码</span></span></div>
+                                </li>
+                                <li class="item">
+                                    <div class="num"><i>4</i></div>
+                                    <div class="txt"><span>修改成功</span></span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form action="{:U('Register/forgetpwd')}"  method="post" class="form-horizontal mtl0" id="formId_Account_User_forgetpwd">
+                        <div class="form-group">
+                            <lable class="group-text">原绑定邮箱：</lable>
+                            <div class="group-box field">
+                                <div class="group-input">
+                                    <input type="text" tabindex="1" valid="required|邮件不能为空" id="email" name="email" placeholder="请输入绑定邮件">
+                                </div>
+                            </div><span id="mb"></span>
+                        </div>
+                        <div class="form-group">
+                            <lable class="group-text">新登录密码：</lable>
+                            <div class="group-box field">
+                                <div class="group-input">
+                                    <input id="newpwd" tabindex="2" type="password" name="newpwd" placeholder="请输入新密码">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <lable class="group-text">邮件验证码：</lable>
+                            <div class="group-box field">
+                                <div class="group-input">
+                                  <input id="code" tabindex="2" type="text" name="code" placeholder="请输入验证码">
+                                    <a href="javascript:;" style="font-size: 22px;background: bisque;" class="button-code-btn" id="getCode">获取验证码</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <lable class="group-text"></lable>
+                            <div class="group-input">
+                                <button type="submit" style="font-size: 22px;width: 200px;" class="btn btn-orange mt20">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $("#email").blur(function(){
+                                str=$("#email").val();
+                                var emailz=/^\w+(\.\w+)*@\w+(\.\w+)+$/i;
+                                if(!emailz.test(str)){
+                                    alert("邮箱格式不正确");
+                                    this.setCustomValidity("邮箱格式不正确");
+                                    return false;
+                                }else {
+                                    url="act=checkemail&email="+str;
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "{:U('Register/check')}",
+                                        data: url,
+                                        success: function (msg) {
+                                            if(msg=="1"){
+                                                $("#mb").html("<font color='red'>该邮箱未注册!</font>");
+
+                                            }
+                                        }
+                                    });
+                                    return true;
+                                }
+                            });
+                            $('#getCode').click(function () {
+                                var btn = $(this);
+                                var count = 60;
+                                v=$("#email").val();
+                                cha="email="+v+"&type=1";
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{:U('Register/mail')}",
+                                    data: cha,
+                                    success: function (msg) {
+                                            alert(msg);
+                                    }
+                                });
+
+                                var resend = setInterval(function () {
+                                    count--;
+                                    if (count > 0) {
+                                        btn.html(count + "秒后可重新获取");
+                                        btn.attr('disabled', true).css('cursor', 'not-allowed');
+
+                                    } else {
+                                        clearInterval(resend);
+                                        btn.html("获取验证码");
+                                    }
+                                }, 1000);
+
+                            });
+
+                        });
+                    </script>
+
+
+
+                </div>
+                <div class="trj-forgetpwd-tips">
+                    <p class="title">温馨提示</p>
+                    <p class="txt">1、登录密码需至少包含数字、字母，且长度在6~20位。</p>
+                    <p class="txt">2、建议定期更换登录密码，安全性高的密码可以使您的账号更加安全。</p>
+                </div>
+            </div>
+        </div>
+
+    </div></div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer start -->
+<include file="Public:footer"/>
+<!-- footer end -->

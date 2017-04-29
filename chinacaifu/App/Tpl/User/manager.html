@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>账户管理</title>
+<style type="text/css">
+		#xiugai_mobile{
+    		height:150px;
+    		width:400px;
+    		position:300px;
+    		top:50px;
+    		left:20%;
+    		background-color:rgba(0,0,0,0.3);
+    		display:none;
+    		}
+    	#xiugai_pwd{
+    		height:150px;
+    		width:400px;
+    		position:300px;
+    		top:50px;
+    		left:20%;
+    		background-color:rgba(0,0,0,0.3);
+    		display:none;
+    		}
+    	#xiugai_paypwd{
+    		height:150px;
+    		width:400px;
+    		position:300px;
+    		top:50px;
+    		left:20%;
+    		background-color:rgba(0,0,0,0.3);
+    		display:none;
+    		}
+
+</style>
+</head>
+<!-- header start -->
+<include file="Public:header"/>
+<!-- end top -->
+<div class="notic_con_wper">
+	  <div class="notic_con px1000">
+	  	   <!--  <div class="notic_ban">
+	  	     	 <img src="__PUBLIC__/images/notic_ban01.png" alt="">
+	  	         </div>
+	  	   -->
+	  	     <div class="notic_section clearfix">
+	  	     	  <div class="notic_sec_l fl">
+	  	     	  	  
+	  	     	  	  <ul class="notic_secl_ul">
+	  	     	  	  	   <li ><a href="{:U('User/center')}">账户首页</a></li>
+	  	     	  	  	   <li><a href="{:U('User/invest')}">投资记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/moneyrecord')}">资金记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/myrewards')}">我的奖励</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/tyj')}">体验金</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/invite')}">邀请好友</a></li>
+	  	     	  	  	   <li><a href="{:U('User/message')}">消息提醒</a></li>
+	  	     	  	  	   <li class="notic_curli"><a href="{:U('User/manager')}">账户管理</a></li>
+
+	  	     	  	  </ul>
+	  	     	  </div>
+	  	     	  <!-- end l -->
+	  	 <div class="user_right_mainBox">
+              <div class="user-index">
+                <div class="listr">
+                   <div class="user-invest">
+    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+    <script>
+    	$(document).ready(function(){
+    		$("#btn_mobile").click(function(){
+    			$("#xiugai_mobile").slideToggle("slow");
+    			
+        	});
+    		$("#btn_pwd").click(function(){
+    			$("#xiugai_pwd").slideToggle("slow");
+    			
+        	});
+    		$("#btn_paypwd").click(function(){
+    			$("#xiugai_paypwd").slideToggle("slow");
+    			
+        	});
+    		$(".reset1").click(function(){
+    			$("#xiugai_mobile").slideToggle("slow");
+    		});
+    		$(".reset2").click(function(){
+    			$("#xiugai_pwd").slideToggle("slow");
+    		});
+    		$(".reset3").click(function(){
+    			$("#xiugai_paypwd").slideToggle("slow");
+    		});
+    		//修改号码
+    		$(".submit1").click(function(){
+    			v1=$("input[name='mobile']").val();
+    			v2=$("input[ name='password']").val();
+    			cha="act=changemobile"+"&mobile="+v1+"&password="+v2;
+    				$.ajax({
+    					type:"POST",
+    					url:"{:U('User/change')}",
+    					data:cha,
+    					success:function(msg){
+    						alert(msg);
+    				}
+    			});
+    				$("#xiugai_mobile").slideToggle("slow");
+    		});
+    		//修改密码
+    		$(".submit2").click(function(){
+    			v1=$("input[name='jpwd']").val();
+    			v2=$("input[ name='newpwd']").val();
+    			cha="act=changepwd"+"&jpwd="+v1+"&newpwd="+v2;
+    				$.ajax({
+    					type:"POST",
+    					url:"{:U('User/change')}",
+    					data:cha,
+    					success:function(msg){
+    						alert(msg);
+    				}
+    			});
+    				$("#xiugai_pwd").slideToggle("slow");
+    		});
+    		//修改支付密码
+    		$(".submit3").click(function(){
+    			v1=$("input[name='jpaypwd']").val();
+    			v2=$("input[ name='newpaypwd']").val();
+    			cha="act=changepaypwd"+"&jpaypwd="+v1+"&newpaypwd="+v2;
+    				$.ajax({
+    					type:"POST",
+    					url:"{:U('User/change')}",
+    					data:cha,
+    					success:function(msg){
+    						alert(msg);
+    				}
+    			});
+    				$("#xiugai_paypwd").slideToggle("slow");
+    		});
+    		$(".submit1111").click(function(){
+    			$("#form1").submit();
+    			alert("修改成功");
+    			$("#edit").slideToggle("slow");
+    		
+    		});
+    		$("#reset1").click(function(){
+    			$("#edit").slideToggle("slow");
+    		});
+    		
+    		
+    	});
+ 
+    </script>
+                
+                    <div class="user-div">
+                    <em>账户管理</em>
+                    </div>
+                   <!--账户信息-->
+                   <div class="account-xi">
+                    <div class="biti">
+                         <p>账户信息</p>
+                      </div>
+                      <ul class="xi-nav">
+                        <li>
+                          <div class="xi-div">手机号码</div>
+                          <div class="xi-div2">
+                            <i class="xi-tu  active"></i>
+                            <div class="z-nr">{$mobile}</div>
+                          </div>
+                          <div class="z-ns">
+                              <div class="z-zh"><button id="btn_mobile">修改</button></div> 
+                          </div>
+                          
+                        </li>
+                         <!-- 隐藏的修改手机号码页面 -->
+				  <div  id="xiugai_mobile" >
+				  		<div style="padding-top:25px;font-size:20px;margin-left:25px;">
+				       <form id="form1" action="{:U('User/manager')}" method="post">
+				       		<input type="hidden" name="act" value="changemobile">
+				        	登录密码：<input type="password" id="password" name="password"><br>
+                           新手机号：<input type="text" id="mobile" name="mobile" ><span id="mb"></span><br>
+				       </form> 	
+				        	<div style="margin-left:120px;margin-top:10px;">
+							<button class="submit1">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="reset1" >取消</button>
+					  		</div>
+					   
+					   </div>
+				 </div>
+                        <li>
+                          <div class="xi-div">登录密码</div>
+                          <div class="xi-div2">
+                            <div><i class="xi-tu active"></i></div>
+                            <div class="z-nr">*******</div>
+                          </div>
+                          <div class="z-ns">
+                            <div class="z-zh"><button id="btn_pwd">修改</button></div>
+                          </div>                         
+                        </li>  
+                        <div  id="xiugai_pwd" >
+					  	<div style="padding-top:25px;font-size:20px;margin-left:25px;">
+					       <form >
+					        	旧密码：<input type="password" id="jpwd" name="jpwd"><br>
+					        	新密码：<input type="password" id="newpwd" name="newpwd"><br>
+					       </form> 	
+					        	<div style="margin-left:120px;margin-top:10px;">
+								<button class="submit2">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="reset2" >取消</button>
+						  		</div>
+						   
+						   </div>
+				 		</div> 
+                        <li>
+                        
+                          <div class="xi-div">实名认证</div>
+                          <div class="xi-div2">
+                            <div><i class="xi-tu  active"></i></div>
+                            <div class="z-nr">***</div>
+                          </div>
+                          <div class="z-zhs">
+                            <div class="z-zh" style="color:#497db7;">已认证</div>
+                          </div>
+                        </li>                                             
+                        <li>
+                          <div  class="xi-div">支付密码</div>
+                          <div class="xi-div2">
+                          <div><i class="xi-tu  active"></i></div>
+                          <div class="z-nr">******</div>
+                          </div>
+
+                          <!--<div class="z-nr">已认证</div>-->
+                          <div class="z-nse">
+                            <div class="z-zhs">
+                            <button id="btn_paypwd">重置</button>
+                          </div>
+                          </div>
+                       </li>
+                       <div  id="xiugai_paypwd" >
+                       <div style="color:red;font-size:16px;">
+                       *默认支付密码为初始注册号码后6位
+                       </div>
+					  	<div style="padding-top:25px;font-size:20px;margin-left:25px;">
+					  		
+					       <form >
+					        	旧支付密码：<input type="password" id="jpaypwd" name="jpaypwd"><br>
+					        	新支付密码：<input type="password" id="newpaypwd" name="newpaypwd"><br>
+					       </form> 	
+					        	<div style="margin-left:120px;margin-top:10px;">
+								<button class="submit3">提交</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="reset3" >取消</button>
+						  		</div>
+						   
+						   </div>
+				 		</div> 
+                      </ul>
+                   </div>
+                   <!--银行卡管理-->
+                   <form ajax="1" method="POST" id="formId_Pc_UserPc_getMyBankCard" action="/Pc/UserPc/getMyBankCard" ajax-after="ajaxAfter_Pc_UserPc_getMyBankCard" ajax-datatype="html">
+                       <div class="bank-main" id="ajaxContent_Pc_UserPc_getMyBankCard"></div>
+                   <input type="hidden" name="__token__" value="a0c97bf194c02fd122c07cf5ed22194f_5b697dd0856a28d7f90578ae7499465b" /></form>
+                  <!--常见问题-->
+                  <div class="problem">
+                      <p class="navp nba"><em></em>常见问题</p>
+                      <div class="pr-d">
+                        <ul class="pro-nav">
+                          <li><a href="/Help/Help/viewHelpIndex?helpType=5&type=3">1、什么是支付密码？</a></li>
+                          <li><a href="/Help/Help/viewHelpIndex?helpType=5&type=3">2、忘记支付密码怎么办？</a></li>
+                          <li><a href="/Help/Help/viewHelpIndex?helpType=5&type=3">3、为什么要进行安全保护问题设置？</a></li>
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer start -->
+<include file="Public:footer"/>
+<!-- footer end -->

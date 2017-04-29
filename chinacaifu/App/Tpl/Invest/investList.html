@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>我要投资</title>
+</head>
+<!-- header start -->
+<include file="Public:header" />
+<!-- end  -->
+<div class="invest_con_wper">
+	  <div class="invest_con px1000">
+	  	     <div class="product_choose">
+	  	     	    <h2 class="product_tit clearfix">
+	  	     	       <em class="proall fl">全部理财产品</em>
+	  	     	       <div class="clearfix fl">
+	  	     	      
+	  	     	       <a href="{:U('Invest/investList')}"><span><img src="__PUBLIC__/images/invest_pic02.png"> 项目列表
+	  	     	       </span></a>
+	  	     	       <a href="{:U('Invest/investList')}?type=1">
+	  	     	       <span><img src="__PUBLIC__/images/invest_pic02.png"> 企业贷</span></a>
+	  	     	       <a href="{:U('Invest/investList')}?type=2">
+	  	     	       <span><img src="__PUBLIC__/images/invest_pic02.png"> 个人消费贷</span>
+	  	     	       </a>
+	  	     	       <a href="{:U('Invest/investList')}?type=3">
+	  	     	       <span><img src="__PUBLIC__/images/invest_pic02.png">债权转让</span>
+	  	     	       </a>
+	  	     	       </div>
+	  	     	      
+	  	     	    </h2>
+	  	     	    <div class="product_box">
+	  	     	    	  <div class="product_list">
+	  	     	    	  	     <div class="invest_prochoose">
+				  	       	      <p><span>项目期限：</span><a href="" class="inpro_cura">不限</a>
+									  <a href="{:U('Invest/investList')}?limit=3">1-3个月</a>
+									  <a href="{:U('Invest/investList')}?limit=4">3个月以上</a></p>
+				  	       	      <p><span>项目状态：</span><a href="#" class="inpro_cura">不限</a>
+									  <a href="{:U('Invest/investList')}">所有借款</a>
+									  <a href="{:U('Invest/investList')}?status=1">正在招标的借款</a>
+									  <a href="{:U('Invest/investList')}?status=2">已完成借款</a></p>
+				  	       	     
+	  	                     </div>
+	  	     	    	  </div>
+	  	     	    	  <!--  -->
+	  	     	    	  <div class="product_list" style="display:none;">
+	  	     	    	  	  
+	  	     	    	  </div>
+	  	     	    	  <!--  -->
+	  	     	    	  <div class="product_list" style="display:none;">
+	  	     	    	  	  
+	  	     	    	  </div>
+	  	     	    	  <!--  -->
+
+	  	     	    </div>
+	  	     </div>
+	  	     <!-- end block -->
+	  	    <h3 class="sort_tit mt30"><em>排序</em>
+	  	    <span>综合排序</span>
+	  	    <span>收益率<img src="__PUBLIC__/images/invest_jiantou.png" alt=""></span>
+	  	    <span>发布时间<img src="__PUBLIC__/images/invest_jiantou.png" alt=""></span>
+	  	    <span>项目期限<img src="__PUBLIC__/images/invest_jiantou.png" alt=""></span>
+	  	    </h3>
+	  	    
+	  	           
+	  	           <foreach name='data' item='one'>
+	  	             <div class="prolist_one prolist_one_bl02 mt20">
+	  	    	           <h2 class="prolist_one_tit"><span class="pro_spanbg02">抵押</span>{$one.invest_name}
+                           </h2>
+                           <ul class="prolist_one_ul clearfix">
+                           	   <li>
+                           	   	   年华收益：<strong>{$one.rate}</strong><br>
+                           	   	   还款方式：{$one.pay_way}
+                           	   </li>
+                           	   <li>
+                           	   	   剩余期限：{$one.time_limit}月<br>
+                                    保障机构：{$one.manager}
+                           	   </li>
+                           	   <li class="prolist_press">
+                           	   	   募集金额：<strong>{$one.amount}</strong> 元 <br>
+                                   认购进度：<span class="ui-progressbar-mid ui-progressbar-mid-100">{$one.progress}%</span>
+                           	   </li>
+                           	   <li class="prolist_btn">
+                           	   	    <a href="{:U('Invest/detail')}?id={$one.id}" class="pro_btn">立即投资</a>
+                           	   </li>
+                           </ul>
+	  	             </div>
+	  	             <!-- end one -->
+	  	             </foreach>
+	  	             
+	  	             <!-- pagelink -->
+	  	             <div style="margin-left:320px;align-text:center;font-size:25px;height:30px;color:red;">
+	  	              {$page}
+	  	              </div>
+	  	              <p class="pagelink">
+	  	                
+	  	              </p>
+	  	             <!-- pagelink end -->
+	  	           
+	  	    </div>
+	  </div>
+</div>
+<include file="Public:footer"/>

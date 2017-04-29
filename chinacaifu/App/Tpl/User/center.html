@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>个人中心</title>
+</head>
+<!-- header start -->
+<include file="Public:header"/>
+<!-- end top -->
+<div class="notic_con_wper">
+	  <div class="notic_con px1000">
+	  	   <!--  <div class="notic_ban">
+	  	     	 <img src="__PUBLIC__/images/notic_ban01.png" alt="">
+	  	         </div>
+	  	   -->
+	  	     <div class="notic_section clearfix">
+	  	     	  <div class="notic_sec_l fl">
+	  	     	  	  
+	  	     	  	  <ul class="notic_secl_ul">
+	  	     	  	  	   <li class="notic_curli"><a href="{:U('User/center')}">账户首页</a></li>
+	  	     	  	  	   <li><a href="{:U('User/invest')}">投资记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/moneyrecord')}">资金记录</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/myrewards')}">我的奖励</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/tyj')}">体验金</a> </li>
+	  	     	  	  	   <li><a href="{:U('User/invite')}">邀请好友</a></li>
+	  	     	  	  	   <li><a href="{:U('User/message')}">消息提醒</a></li>
+	  	     	  	  	   <li><a href="{:U('User/manager')}">账户管理</a></li>
+
+	  	     	  	  </ul>
+	  	     	  </div>
+	  	     	  <!-- end l -->
+	  	    <div class="user_right_mainBox">
+                   <input id="amount_view" type="hidden" value="0.00">
+                  <input id="money_invest" type="hidden" value="0.00">
+                  <input id="totalAccount" type="hidden" value="0.00">
+                <div class="user-index">
+                    <div class="list">
+                        <div class="headerList">
+                            <p class="gk">账户概况</p>
+                        </div>
+                        <volist name="data" id="vo">
+                        
+                        <div class="wealth">
+                            <ul class="value">
+                                <li class="money-list-left">
+                                    <span class="txt">净资产（元）<em>?</em>
+                                       
+                                    </span>
+                                    <span class="money"><i>{$all}</i></span>
+                                </li>
+                                <li class="money-list-right">
+                                    <div class="user-balance">
+                                        可用金额<span><i>{$vo.ye}</i></span>元
+                                    </div>
+                                    <div class="btn-box">
+                                        <a href="{:U('User/recharge')}" class="bg-rad">充值</a>
+                                        <a href="{:U('User/cashOut')}" class="bg-blur">提现</a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="per-all">
+                                <div class="par-list">
+                                    <p class="par-list-txt">
+                                        <span class="txt">总投资金额（元）</span>
+                                        <span class="orgin money-txt"><i>{$vo.invest_money}</i></span>
+                                        <span class="txt">元</span>
+                                    </p>
+                                    <p class="par-list-txt">
+                                        <span class="txt">投资中总额（元）</span>
+                                        <span class="orgin money-txt"><i>{$dhk}</i></span>
+                                        <span class="txt">元</span>
+                                    </p>
+                                    <p class="par-list-txt">
+                                        <span class="txt">已回款总额（元）</span>
+                                        <span class="orgin money-txt"><i>{$yhk}</i></span>
+                                        <span class="txt">元</span>
+                                    </p>
+                                    <div style="margin-left:320px;margin-top:-115px;">
+                                    <p class="par-list-txt">
+                                        <span class="txt">预期待收益（元）</span>
+                                        <span class="money-txt"><i>0</i></span>
+                                        <span class="txt">元</span>
+                                    </p>
+                                    <div class="par-list-txt">
+                                        <span class="txt">已回款收益（元）<em>?</em>
+                                          
+
+                                        </span>
+                                        <span class="money-txt"><i>0</i></span>
+                                        <span class="txt">元</span>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="havaList">
+                                
+                                <li>有效变现券<i><a href="{:U('User/myrewards')}">{$ticketnum}</a></i>张</li>
+                                <li>邀请好友<i>{$ynum}</i>人</li>
+                            </ul>
+                        </div>
+                    </div>
+                    </volist>
+                    <div class="list remind">
+                        <div class="headerList">
+                            <span class="payment-right">回款时间</span>
+                            <p class="gk">回款提醒</p>
+                        </div>
+                        <div class="wealth">
+                         最近5天待回款：
+                        </div>
+                    </div>
+	  	     	  	     
+	  	     	  </div>
+	  	     </div>
+	 	 </div>
+	</div>
+</div>
+<include file="Public:footer"/>

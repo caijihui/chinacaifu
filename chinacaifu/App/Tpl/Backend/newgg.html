@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台模板</title>
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="__PUBLIC__/css/add.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="__PUBLIC__/utilLib/bootstrap.min.css" type="text/css" media="screen" />
+
+</head>
+<body>
+<div class="div_from_aoto" style="width: 500px;">
+    <FORM action="{:U('Backend/newgg')}" method="get">
+        <DIV class="control-group">
+            <label class="laber_from">标题</label>
+            <DIV  class="controls" ><INPUT class="input_from" type="text" name="title" placeholder=" 请输入文章标题"><P class=help-block></P></DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from">来源</LABEL>
+            <DIV  class="controls" ><INPUT class="input_from" type="text" name="source" placeholder=" 请输入来源"><P class=help-block></P></DIV>
+        </DIV>
+        <DIV class="control-group">
+            <LABEL class="laber_from" >文章内容</LABEL>
+            <DIV  class="controls" ><textarea name="content" placeholder="文章内容"></textarea><P class=help-block></P></DIV>
+        </DIV>
+
+        <DIV class="control-group">
+            <LABEL class="laber_from" ></LABEL>
+            <DIV class="controls" ><button type="submit" class="btn btn-success" style="width:120px;" >确认发布</button></DIV>
+        </DIV>
+    </FORM>
+</div>
+</body>
+</html>

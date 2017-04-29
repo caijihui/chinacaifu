@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+<title>关于我们</title>
+</head>
+<!-- header start -->
+<include file="Public:header" />
+<!-- end  -->
+<div class="notic_con_wper">
+	  <div class="notic_con px1000">
+	  	     <div class="notic_ban">
+	  	     	 <img src="__PUBLIC__/images/notic_ban01.png" alt="">
+	  	     </div>
+	  	     <div class="notic_section clearfix">
+	  	     	  <div class="notic_sec_l fl">
+	  	     	  	  <h3><img width="185px" height="110px" src="__PUBLIC__/images/notic_pic01.png" alt=""></h3>
+	  	     	  	  <ul class="notic_secl_ul">
+	  	     	  	       <li class="notic_curli" id="wzgg"><a href="{:U('Index/noticelist')}" >网站公告</a></li>
+	  	     	  	  	   <li  id="gsjs">公司介绍</li>
+	  	     	  	  	   <li id="tdjs">团队介绍</li>
+	  	     	  	  	   <li><a href="{:U('Index/problem')}">常见问题</a> </li>
+
+	  	     	  	  </ul>
+	  	     	  </div>
+	  	     	  <!-- end l -->
+	  	     	  
+	  	     	  <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+			<script>
+		    $(document).ready(function(){
+	    		$("#gsjs").click(function(){
+	    			$("#content").html("中国财富（www.chinacaifu.com）汇集了来自于银行、证券、互联网、电子商务等行业的精英人才，致力于成为中国互联网金融P2P网贷行业的领军企业"+
+
+	    					"平台通过严格的风控审核来筛选项目，并携手实力担保机构提供风险保障，以供应链金融为主要特色，采用P2P网贷的模式为有借款需求的中小微企业、消费需求的个人和有投资理财需求的个人牵线搭桥，实现资金融通、互利双赢。"+
+
+	    					 "对借款人而言，中国财富是快捷高效的融资平台；对投资人而言，中国财富是安全可靠、回报可观的理财平台。");
+	 			});
+	    		$("#tdjs").click(function(){
+	    			$("#content").html("");
+	    			$("#content").html("<div>马总"
+	    					+"<br> 联合创始人兼CEO"
+							+"<br>18年金融从业经历，15年团队管理经验，浙江大学金融硕士。"
+							+"<br>曾任职albb 、da保险集团 常务副总裁。"
+							+"<br>掌握金融借贷规划、实施和管理经验，有多年金融从业经验，在业界拥有良好的口碑和人脉资源关系。<div>"
+	    					+"<div>牛总"
+	    					+"<br> 联合创始人兼CTO"
+							+"<br>10年互联网从业经历，7年团队管理经验，清华大学软件工程硕士。"
+							+"<br>曾任职8848 技术负责人、安邦保险集团 IT总经理和我爱我家 CTO。"
+							+"<br>掌握大型互联网平台规划、实施和管理经验，有多年的大型企业集团信息系统的运营实施的经验。<div>"
+	    					+"<div>杨总"
+	    					+"<br> 联合创始人兼COO"
+							+"<br>8年互联网运营经历，7年团队管理经验，武汉大学市场学硕士。"
+							+"<br>曾任职tx,bd运营部。"
+							+"<br>了解大型互联网平台规划、实施和运营经验<div>"	);
+	    		});
+	    		$(".wz").click(function(){
+	    			v=$(this).val();
+	    			url="id="+v;
+	    			$.ajax({
+						
+    					type:"POST",
+    					url:"{:U('Index/article')}",
+    					data:url,
+    					success:function(msg){
+    						    
+    							 $("#content").html(msg);
+    						
+    						}
+    				});
+	    			
+	    		});
+	    		
+			});
+			</script>
+	  	     	  <div class="notic_sec_r fl">
+	  	     	  		<div id="content" style="font-size:20px;width:700px;height:400px;">
+	  	     	  		 <h2 class="notic_secr_tit">网站公告</h2>
+	  	     	  	    <ul class="notic_secr_ul">
+	  	     	  	   
+	  	     	  	     <foreach name="data" item="one">
+	  	     	  	    	<li class="wz" value="{$one.id}">{$one.title}<span>{$one.ctime}</span></li>
+	  	     	  	    	
+	  	     	  	     </foreach>
+	  	     	  	    	
+	  	     	  	    </ul>
+	  	     	  	    <p class="notic_pagelink">
+	  	     	  	    	 {$page}
+	  	     	  	    </p>
+	  	     	  	    
+	  	     	  		</div>
+	  	     	
+	  	     	  </div>
+	  	     </div>
+	  </div>
+</div>
+<script type="text/javascript">
+	
+</script>

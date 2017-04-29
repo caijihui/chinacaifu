@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table  border="1" cellpadding="0" style="border: 1px solid red;width:800px;margin-left:50px;">
+
+    <tr>
+        <th>标的id</th>
+        <th>标名称</th>
+        <th>募集金额</th>
+        <th>利率</th>
+        <th>进度</th>
+        <th>募集余额</th>
+        <th>借款期限</th>
+        <th>借款人</th>
+        <th>状态</th>
+        <th>发布时间</th>
+        <th>操作</th>
+    </tr>
+    <if condition="$wu eq 0">
+        <span>暂无记录</span>
+     <else />
+
+    <foreach name="data" item="one">
+        <tr>
+            <td>{$one.id}</td>
+            <td>{$one.invest_name}</td>
+            <td>{$one.amount}</td>
+            <td>{$one.rate}</td>
+            <td>{$one.progress}%</td>
+            <td>{$one.ye}</td>
+            <td>{$one.time_limit}</td>
+            <td>{$one.borrower}</td>
+            <td>{$one.status}</td>
+            <td>{$one.bulid_time}</td>
+            <td>
+                <a href="{:U('Repayment/repaymentAct')}?act=pay&id={$one.id}">现在还款</a>
+                <a href="{:U('Repayment/repaymentAct')}?act=putoff&id={$one.id}">延期还款</a>
+
+            </td>
+
+        </tr>
+    </foreach>
+    </if>
+</table>
+<div style="width: auto;margin-left: 200px;margin-top: 30px">{$page}</div>
+
+
+其中状态：1 募集中 2 待还款 3已还款 4流标
+</body>
+</html>
